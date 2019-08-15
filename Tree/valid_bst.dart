@@ -46,7 +46,7 @@ bool isValidBST_Inorder(TreeNode root) {
     }
 
     root = stack.removeLast();
-    print("befor inorder = $inorder, val = ${root.val}");
+    print("before inorder = $inorder, val = ${root.val}");
     if (root.val <= inorder) return false;
     inorder = root.val;
     root = root.right;
@@ -71,8 +71,8 @@ bool isValidBST_Recursive(TreeNode root, int lower, int upper) {
 
 void main() {
 
-  BinarySearchTree tree = BinarySearchTree([2,1,3]);
-  BinarySearchTree tree2 = BinarySearchTree([5,1,4,null,null,3,6]);
+  BinaryTree tree = BinaryTree([2,1,3]);
+  BinaryTree tree2 = BinaryTree([5,1,4,null,null,3,6]);
   
   print(tree.seqTraverse());
   print(tree2.seqTraverse());

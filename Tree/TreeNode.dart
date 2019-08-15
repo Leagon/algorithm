@@ -10,17 +10,17 @@ class TreeNode {
   void setRight(TreeNode node) => right = node;
 }
 
-class BinarySearchTree {
+class BinaryTree {
   List<dynamic> array;
 
-  BinarySearchTree(this.array) {
+  BinaryTree(this.array) {
     root = TreeNode(this.array.elementAt(0));
-    _buildBinarySearchTree(root, 0);
+    _buildBinaryTree(root, 0);
   }
 
   TreeNode root;
 
-  void _buildBinarySearchTree(TreeNode root, int rootIndex) {
+  void _buildBinaryTree(TreeNode root, int rootIndex) {
 
     int lIndex = 2 * rootIndex + 1;
     int rIndex = 2 * rootIndex + 2;
@@ -30,7 +30,7 @@ class BinarySearchTree {
       if (le != null) {
         TreeNode lnode = TreeNode(le);
         root.setLeft(lnode);
-        _buildBinarySearchTree(lnode, lIndex);
+        _buildBinaryTree(lnode, lIndex);
       }
     }
 
@@ -39,7 +39,7 @@ class BinarySearchTree {
       if (re != null) {
         TreeNode rnode = TreeNode(re);
         root.setRight(rnode);
-        _buildBinarySearchTree(rnode, rIndex);
+        _buildBinaryTree(rnode, rIndex);
       }
     }
   }

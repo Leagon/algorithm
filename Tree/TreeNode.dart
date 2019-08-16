@@ -9,7 +9,7 @@ class TreeNode {
   void setLeft(TreeNode node) => left = node;
   void setRight(TreeNode node) => right = node;
 
-  operator == (dynamic node) => this.val == node.val;
+  bool operator == (dynamic node) => this.val == node.val;
 }
 
 class BinaryTree {

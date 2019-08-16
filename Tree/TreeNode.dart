@@ -73,4 +73,32 @@ class BinaryTree {
   }
 
   // 中序遍历
+  List<dynamic> inOrderList = [];
+  void inOrder(TreeNode node) {
+    if (node == null) return null;
+
+    inOrder(node.left);
+    inOrderList.add(node.val);
+    inOrder(node.right);
+  }
+
+  // 前序遍历
+  List<dynamic> preOrderList = [];
+  void preOrder(TreeNode node) {
+    if (node == null) return null;
+
+    preOrderList.add(node.val);
+    preOrder(node.left);
+    preOrder(node.right);
+  }
+
+  // 后序遍历
+  List<dynamic> postOrderList = [];
+  void postOrder(TreeNode node) {
+    if (node == null) return null;
+
+    postOrder(node.left);
+    postOrder(node.right);
+    postOrderList.add(node.val);
+  }  
 }

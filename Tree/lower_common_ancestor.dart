@@ -107,4 +107,15 @@ void main () {
 
   TreeNode rs4 = lowestCommonAncestor_binary_search_tree(bst.root, TreeNode(2), TreeNode(4));
   print(rs4.val);
+
+  //
+  print("========== 中序遍历 ==========");
+  bst.inOrder(bst.root);
+  print(bst.inOrderList);
+  print("========== 前序遍历 ==========");
+  bst.preOrder(bst.root);
+  print(bst.preOrderList);
+  print("========== 后序遍历 ==========");
+  bst.postOrder(bst.root);
+  print(bst.postOrderList);
 }

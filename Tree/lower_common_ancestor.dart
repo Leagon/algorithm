@@ -44,7 +44,7 @@ bool recurse(TreeNode root, TreeNode p, TreeNode q) {
   int left = recurse(root.left, p, q) ? 1 : 0;
   int right = recurse(root.right, p, q) ? 1 : 0;
 
-  int mid = (root.val == p.val || root.val == q.val) ? 1 : 0;
+  int mid = (root == p || root == q) ? 1 : 0;
 
   if (mid + left + right >= 2) {
     ans = root;

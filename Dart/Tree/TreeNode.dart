@@ -15,6 +15,7 @@ class TreeNode {
 class BinaryTree {
   List<dynamic> array;
 
+  /// 根据层序遍历创建BinaryTree
   BinaryTree(this.array) {
     root = TreeNode(this.array.elementAt(0));
     _buildBinaryTree(root, 0);

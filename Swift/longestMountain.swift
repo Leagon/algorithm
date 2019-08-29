@@ -1,6 +1,3 @@
-import Foundation
-
-
 func longestMountain(_ A: [Int]) -> Int {
     
     let count = A.count

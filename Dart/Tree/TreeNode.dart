@@ -2,12 +2,12 @@ import 'dart:collection';
 
 class TreeNode {
   int val;
-  TreeNode left;
-  TreeNode right;
+  dynamic left;
+  dynamic right;
   TreeNode(this.val, {this.left, this.right});
 
-  void setLeft(TreeNode node) => left = node;
-  void setRight(TreeNode node) => right = node;
+  void setLeft(dynamic node) => left = node;
+  void setRight(dynamic node) => right = node;
 
   bool operator == (dynamic node) => this.val == node.val;
 }
@@ -21,7 +21,7 @@ class BinaryTree {
     _buildBinaryTree(root, 0);
   }
 
-  TreeNode root;
+  dynamic root;
 
   void _buildBinaryTree(TreeNode root, int rootIndex) {
 

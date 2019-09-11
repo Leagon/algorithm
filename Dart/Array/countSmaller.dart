@@ -96,25 +96,67 @@ class CountSmallerBST extends BinaryTree {
 List<int> merge_countSmaller(List<int> nums) {
   final n = nums.length;
 
-  if (n <= 0) return [];
+  if (n == 0) return [];
+  if (n == 1) return [0];
 
   // 存放返回结果
-  var result = List.filled(n, 0);
-
-  // 使用位置索引
-  List<int> idx = List.filled(n, 0);
+  Map<int, List<int>> result = Map();
   for (int i = 0; i < n; i++) {
-    idx[i] = i;
+    result[nums[i]] = [i, 0];
   }
 
-  mergeSort(nums, 0, n-1, idx, idx.map((e) => e), result);
+  mergeSort(nums, 0, n-1, result);
 
-  return result;
+  return result.values.map((e) => e.last).toList();
 }
 
-// aux 辅助数组
-void mergeSort(List<int> nums, int low, int high, List<int> idx, List<int> aux, List<int> res) {
-  
+void mergeSort(List<int> nums, int low, int high, Map<int, List<int>> res) {
+  if (low == high) return;
+
+  int mid = (low + high) ~/ 2;
+
+  mergeSort(nums, low, mid, res);
+  mergeSort(nums, mid+1, high, res);
+  merge(nums, low, mid, high, res);
+}
+
+void merge(List<int> nums, int low, int mid, int high, Map<int, List<int>> res) {
+
+  int i = low;
+  int j = mid + 1;
+
+  int count = high - low + 1;
+  var temp = List.filled(count, 0);
+  int index = 0;
+
+  while (i <= mid && j <= high) {
+    if (nums[i] < nums[j]) {
+      temp[index++] = nums[i++];
+    } else {
+      // 从 i-mid 之间的数字都大于 nums[j], 所以res都+1
+      for (int k = i; k <= mid; k++) {
+        var v = res[nums[k]];
+        v.last = v.last += 1;
+        res[nums[k]] = v;
+      }
+      temp[index++] = nums[j++];
+    }
+  }
+
+  while(i <= mid) {
+    temp[index++] = nums[i++];
+  }
+
+  while(j <= high) {
+    temp[index++] = nums[j++];
+  }
+
+  for (int m = 0; m < count; m++) {
+    nums[low+m] = temp[m];
+    var v = res[temp[m]];
+    v.first = low+m;
+    res[temp[m]] = v;
+  }
 }
 
 void main() {
@@ -125,4 +167,10 @@ void main() {
   final bst = CountSmallerBST([2, 11, 6, 10, 3, 5]);
   final res2 = bst.countSmaller();
   print(res2);
+
+  final res3 = merge_countSmaller(nums);
+  print(res3);
+
+  final res4 = merge_countSmaller([2, 11, 6, 10, 3, 5]);
+  print(res4);
 }

@@ -1,6 +1,6 @@
 import UIKit
 
-struct PriorityQeueu<Element> {
+struct PriorityQeueue<Element> {
     
     
     fileprivate var _elements = [Element]()
@@ -111,3 +111,7 @@ struct PriorityQeueu<Element> {
         }
     }
 }
+
+
+let maxPriorityQueue = PriorityQeueue<Int>(hasHigherPriority: >, isEqual: ==)
+
